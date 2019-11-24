@@ -2,6 +2,9 @@
   "name": "ejs-prerender",
   "version": "0.1.0",
   "description": "",
+  "bin": {
+    "ejs-prerender": "bin/ejs-prerender.js"
+  },
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
