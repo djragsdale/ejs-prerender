@@ -15,6 +15,7 @@ const STATUSES = {
 
 const main = async function main() {
   const config = getConfig();
+  console.log('got config', config);
 
   const viewData = {};
   const statuses = {};
@@ -23,17 +24,19 @@ const main = async function main() {
   const replaceExtension = (oldExtension, newExtension, path) => `${path.substring(0, path.length - oldExtension.length)}${newExtension}`;
 
   const pages = await grabPages(config);
+  console.log('pages', pages);
   const writePromises = pages
     .map((pagePath) => async function pageFn() {
+      console.log('writing page', pagePath);
       statuses[pagePath] = STATUSES.RENDERING;
       const html = await renderTemplate(config, {
         templatePath: pagePath,
-        viewData
+        viewData,
       });
       statuses[pagePath] = STATUSES.WRITING;
       await writeHtml(config, {
         pagePath: replaceExtension('.ejs', '.html', pagePath),
-        content: html
+        content: html,
       });
       statuses[pagePath] = STATUSES.COMPLETE;
     });
