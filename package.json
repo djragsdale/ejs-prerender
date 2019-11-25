@@ -1,6 +1,6 @@
 {
   "name": "ejs-prerender",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A tool for structured pre-rendering of EJS templates and partials",
   "keywords": ["ejs", "prerender", "ssr"],
   "bin": {
