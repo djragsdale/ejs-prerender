@@ -1,5 +1,21 @@
 # ejs-prerender
 
+## Usage
+
+This package is typically used as a devDependency. Install by running `npm i -D ejs-prerender`. It can be used as an npm script like the following:
+
+```
+"build:templates": "ejs-prerender",
+```
+
+and run manually using `npx`:
+
+```
+npx ejs-prerender
+```
+
+This package utilizes the debug library, so adding `DEBUG=*` to a `.env` file or the command path (`DEBUG=* npx ejs-prerender`) will enable logging of everything.≈
+
 ## Configuration
 
 ### Environment Variables
