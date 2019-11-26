@@ -14,7 +14,43 @@ and run manually using `npx`:
 npx ejs-prerender
 ```
 
-This package utilizes the debug library, so adding `DEBUG=*` to a `.env` file or the command path (`DEBUG=* npx ejs-prerender`) will enable logging of everything.≈
+This package utilizes the debug library, so adding `DEBUG=*` to a `.env` file or the command path (`DEBUG=* npx ejs-prerender`) will enable logging of everything.
+
+## Recommended File Structure
+
+The following file structure works out-of-the-box with no customized environment variables.
+
+```
+root
+├ components/
+│ └ head.ejs
+└ pages
+  ├ about
+  │ └ index.ejs
+  └ index.ejs
+```
+
+will render as
+
+```
+root
+└ public
+  ├ about
+  │ └ index.html
+  └ index.html
+```
+
+The components can be simply referenced inside EJS pages as seen below:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('head') -%>
+  </head>
+  <body><h1>INDEX</h1></body>
+</html>
+```
 
 ## Configuration
 
