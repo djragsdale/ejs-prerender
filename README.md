@@ -24,8 +24,8 @@ The following file structure works out-of-the-box with no customized environment
 root
 ├ components/
 │ └ head.ejs
-└ pages
-  ├ about
+└ pages/
+  ├ about/
   │ └ index.ejs
   └ index.ejs
 ```
@@ -34,8 +34,8 @@ will render as
 
 ```
 root
-└ public
-  ├ about
+└ public/
+  ├ about/
   │ └ index.html
   └ index.html
 ```
