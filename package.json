@@ -1,38 +1,20 @@
 {
   "name": "ejs-prerender",
-  "version": "1.0.3",
-  "description": "A tool for structured pre-rendering of EJS templates and partials",
-  "keywords": [
-    "ejs",
-    "prerender",
-    "ssr"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "bin": {
-    "ejs-prerender": "bin/ejs-prerender.js"
-  },
-  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "lerna run compile",
+    "clean": "lerna run clean",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
+    "update-version": "lerna publish --skip-git --skip-npm --force-publish '*'",
+    "update-clean": "lerna publish",
+    "check-packages": "npm clean && npm run compile && npm test && npm lint",
+    "publish-packages": "./scripts/publish"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/djragsdale/ejs-prerender.git"
-  },
-  "author": "David Ragsdale",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/djragsdale/ejs-prerender/issues"
-  },
-  "homepage": "https://github.com/djragsdale/ejs-prerender#readme",
-  "dependencies": {
-    "@testerum/ejs-compiled-loader-webpack4-nodeps": "0.0.1",
-    "compile-ejs-loader": "0.0.2",
-    "debug": "^4.1.1",
-    "ejs": "^2.7.1",
-    "ejs-compiled-loader": "^2.0.0",
-    "fs-extra": "^8.1.0",
-    "glob": "^7.1.5",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.0.0"
+  "devDependencies": {
+    "lerna": "^3.19.0"
   }
 }

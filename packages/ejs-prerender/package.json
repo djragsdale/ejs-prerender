@@ -1,0 +1,33 @@
+{
+  "name": "ejs-prerender",
+  "version": "1.0.3",
+  "description": "A tool for structured pre-rendering of EJS templates and partials",
+  "keywords": [
+    "ejs",
+    "prerender",
+    "ssr"
+  ],
+  "bin": {
+    "ejs-prerender": "bin/ejs-prerender.js"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djragsdale/ejs-prerender.git"
+  },
+  "author": "David Ragsdale",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djragsdale/ejs-prerender/issues"
+  },
+  "homepage": "https://github.com/djragsdale/ejs-prerender#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "ejs": "^2.7.1",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.5"
+  }
+}

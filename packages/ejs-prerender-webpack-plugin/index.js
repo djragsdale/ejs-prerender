@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const utils = require('loader-utils');
 const path = require('path');
 
 const getConfig = require('../getConfig');
@@ -33,7 +32,7 @@ class EjsPrerenderWebpackPlugin {
 
     this.pages = grabPagesSync(this.config);
     console.log('pages', this.pages);
-    
+
 
     // const loader = 'ejs-compiled-loader'; // Doesn't work with Webpack 4 😡
     // This loader, like many, only compiles the template but does not render with data.
@@ -78,11 +77,14 @@ class EjsPrerenderWebpackPlugin {
     });
 
     // this.initialized.then(() => {
-      // console.log('initialized done');
-      this.plugins.forEach(({ pagePath, plugin }) => {
-        console.log(`Applying plugin array for page "${pagePath}"`);
-        plugin.apply(compiler);
-      })
+    // console.log('initialized done');
+    this.plugins.forEach(({
+      pagePath,
+      plugin
+    }) => {
+      console.log(`Applying plugin array for page "${pagePath}"`);
+      plugin.apply(compiler);
+    })
     // }).catch((err) => {
     //   console.error('EjsPrerenderWebpackPlugin error: ', err);
     // });
