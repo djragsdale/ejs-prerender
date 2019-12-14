@@ -1,4 +1,4 @@
-const debug = require('./debug').extend('renderTemplate');
+const debug = require('./debug')('renderTemplate');
 const ejs = require('ejs');
 const fse = require('fs-extra');
 const path = require('path');

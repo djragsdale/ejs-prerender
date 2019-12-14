@@ -1,4 +1,4 @@
-const debug = require('./debug');
+const debug = require('./debug')('base');
 const getConfig = require('./getConfig');
 const grabPages = require('./grabPages');
 const renderTemplate = require('./renderTemplate');

@@ -1,10 +1,12 @@
+const ejsPrerender = require('ejs-prerender');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
 const {
   getConfig,
   grabPagesSync,
   replaceExtension,
-} = require('ejs-prerender');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+} = ejsPrerender;
 
 // const getConfig = require('../getConfig');
 // const grabPages = require('../grabPages');
@@ -35,6 +37,8 @@ class EjsPrerenderWebpackPlugin {
     } = this.config;
     // this.pages = this.options.pages;
 
+    console.log('ejsPrerender', Object.keys(ejsPrerender));
+    console.log('grabPagesSync', grabPagesSync);
     this.pages = grabPagesSync(this.config);
     console.log('pages', this.pages);
 
@@ -43,23 +47,22 @@ class EjsPrerenderWebpackPlugin {
     // This loader, like many, only compiles the template but does not render with data.
     // I may need to fork 'ejs-compiled-loader' and upgrade it to work with Webpack 4
     const loader = 'ejs-render-loader';
-    // const loaderOptions = `?views[]=${componentsDir}`;
     const loaderOptions = `?{"templateOptions":{"views":["${componentsDir}"]}}`;
 
     this.plugins = this.pages.map((pagePath) => {
-      console.log(
-        `Instantiating plugin for page "${pagePath}"`,
-        path.relative(baseDir, path.join(pagesDir, pagePath)),
-        path.relative(baseDir, path.join(outputDir, pagePath)),
-        replaceExtension('.ejs', '.html', pagePath),
-      );
+      // console.log(
+      //   `Instantiating plugin for page "${pagePath}"`,
+      //   path.relative(baseDir, path.join(pagesDir, pagePath)),
+      //   path.relative(baseDir, path.join(outputDir, pagePath)),
+      //   replaceExtension('.ejs', '.html', pagePath),
+      // );
 
       // Replace extension and trim leading /
       const desiredFilename = replaceExtension('.ejs', '.html', pagePath.substring(1));
       const fullTemplatePath = `${loader}${loaderOptions}!${path.relative(baseDir, path.join(pagesDir, pagePath))}`;
       // const fullTemplatePath = `${loader}!${path.relative(baseDir, path.join(pagesDir, pagePath))}`;
 
-      console.log(`Loading template of value "${fullTemplatePath}"`);
+      // console.log(`Loading template of value "${fullTemplatePath}"`);
       // console.log('parseQuery', utils.parseQuery(fullTemplatePath));
 
       return {
@@ -68,15 +71,16 @@ class EjsPrerenderWebpackPlugin {
           filename: desiredFilename,
           template: fullTemplatePath,
           inject: true,
-          htmlPluginOptions: {
-            unnecessary: 'something',
-          },
-          templateParameters: {
-            something: 'whatever',
-          },
-          options: {
-            views: [componentsDir],
-          },
+          // htmlPluginOptions: {
+          //   unnecessary: 'something',
+          // },
+          // templateParameters: {
+          //   something: 'whatever',
+          // },
+          // options: {
+          //   whatever: 'huh',
+          // },
+          // options
         }),
       };
     });

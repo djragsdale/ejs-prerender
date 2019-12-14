@@ -1,6 +1,6 @@
 {
   "name": "ejs-render-loader",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@piuccio/ejs-compiled-loader": "^3.0.0",
     "ejs": "^3.0.1",
-    "ejs-prerender": "^1.0.3",
+    "ejs-prerender": "^1.0.4-beta.2",
     "loader-utils": "^1.2.3",
     "merge": "^1.2.1"
   }

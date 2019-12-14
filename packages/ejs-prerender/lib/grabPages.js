@@ -1,4 +1,4 @@
-const debug = require('./debug').extend('grabPages');
+const debug = require('./debug')('grabPages');
 const glob = require('glob');
 const { promisify } = require('util');
 

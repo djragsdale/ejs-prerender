@@ -14,7 +14,7 @@ and run manually using `npx`:
 npx ejs-prerender
 ```
 
-This package utilizes the debug library, so adding `DEBUG=*` to a `.env` file or the command path (`DEBUG=* npx ejs-prerender`) will enable logging of everything.
+This package utilizes the debug library, so adding `DEBUG=ejs-prerender:*` to a `.env` file or the command path (`DEBUG=ejs-prerender:* npx ejs-prerender`) will enable logging of everything.
 
 ## Recommended File Structure
 
