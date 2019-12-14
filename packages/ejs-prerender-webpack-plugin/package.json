@@ -1,6 +1,6 @@
 {
   "name": "ejs-prerender-webpack-plugin",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "@piuccio/ejs-compiled-loader": "^3.0.0",
     "ejs-prerender": "^1.1.0-beta.1",
-    "ejs-prerender-loader": "^0.1.0-alpha.1",
+    "ejs-prerender-loader": "^0.1.0-alpha.2",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.0.0"
   },
