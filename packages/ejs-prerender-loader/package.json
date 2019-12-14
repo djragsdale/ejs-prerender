@@ -1,6 +1,6 @@
 {
   "name": "ejs-prerender-loader",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "@piuccio/ejs-compiled-loader": "^3.0.0",
     "ejs": "^3.0.1",
-    "ejs-prerender": "^1.1.0-beta.0",
+    "ejs-prerender": "^1.1.0-beta.1",
     "loader-utils": "^1.2.3",
     "merge": "^1.2.1"
   },
