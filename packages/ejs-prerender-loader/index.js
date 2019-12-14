@@ -29,7 +29,7 @@ module.exports = function (source) {
 
   // console.log('ejs-render-loader options', options);
 
-  const filename = loaderUtils.getRemainingRequest(this).replace(/^!/, "");
+  const filename = utils.getRemainingRequest(this).replace(/^!/, "");
   // Use filenames relative to working dir, which should be project root
   // options.filename = path.relative(process.cwd(), this.resourcePath);
   options.filename = filename;
