@@ -10,9 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "@piuccio/ejs-compiled-loader": "^3.0.0",
-    "ejs-prerender": "1.0.4-beta.2",
-    "ejs-render-loader": "0.1.0",
+    "ejs-prerender": "^1.1.0-beta.0",
+    "ejs-prerender-loader": "0.1.0-alpha.0",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.0.0"
-  }
+  },
+  "gitHead": "a04007753a61f0f363b1579d8e0277e2a7d6cbf4"
 }

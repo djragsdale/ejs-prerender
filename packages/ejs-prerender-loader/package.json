@@ -1,5 +1,5 @@
 {
-  "name": "ejs-render-loader",
+  "name": "ejs-prerender-loader",
   "version": "0.1.0-alpha.0",
   "description": "",
   "main": "index.js",
@@ -11,8 +11,9 @@
   "dependencies": {
     "@piuccio/ejs-compiled-loader": "^3.0.0",
     "ejs": "^3.0.1",
-    "ejs-prerender": "^1.0.4-beta.2",
+    "ejs-prerender": "^1.1.0-beta.0",
     "loader-utils": "^1.2.3",
     "merge": "^1.2.1"
-  }
+  },
+  "gitHead": "a04007753a61f0f363b1579d8e0277e2a7d6cbf4"
 }

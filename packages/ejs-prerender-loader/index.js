@@ -4,13 +4,15 @@ const utils = require('loader-utils');
 const merge = require('merge');
 const path = require('path');
 
+const pkg = require('./package.json');
+
 const {
   getBaseComponentsDir,
   getConfig,
 } = ejsPrerender;
 
 module.exports = function (source) {
-  console.log('Invoking ejs-render-loader', Object.keys(ejsPrerender));
+  console.log(`Invoking ejs-render-loader@${pkg.version}`, Object.keys(ejsPrerender));
   // console.log('ejs-render-loader source', source);
   this.cacheable && this.cacheable();
 

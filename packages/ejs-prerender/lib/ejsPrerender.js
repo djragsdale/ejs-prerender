@@ -5,6 +5,8 @@ const renderTemplate = require('./renderTemplate');
 const replaceExtension = require('./replaceExtension');
 const writeHtml = require('./writeHtml');
 
+const pkg = require('../package.json');
+
 const STATUSES = {
   RENDERING: 'is being rendered...',
   WRITING: 'is being written to file...',
@@ -12,6 +14,7 @@ const STATUSES = {
 };
 
 module.exports = async function ejsPrerender(options = {}) {
+  debug(`Using ejs-prerender@${pkg.version}`);
   const config = getConfig(options);
 
   const viewData = {};

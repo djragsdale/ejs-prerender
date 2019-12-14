@@ -2,6 +2,8 @@ const ejsPrerender = require('ejs-prerender');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+const pkg = require('./package.json');
+
 const {
   getConfig,
   grabPagesSync,
@@ -15,7 +17,7 @@ const {
 
 class EjsPrerenderWebpackPlugin {
   constructor(options = {}) {
-    console.log('Constructing EjsPrerenderWebpackPlugin plugin');
+    console.log(`Constructing EjsPrerenderWebpackPlugin@${pkg.version} plugin`);
     this.options = options;
     console.log('Completing constructor');
   }
@@ -46,7 +48,7 @@ class EjsPrerenderWebpackPlugin {
     // const loader = 'ejs-compiled-loader'; // Doesn't work with Webpack 4 😡
     // This loader, like many, only compiles the template but does not render with data.
     // I may need to fork 'ejs-compiled-loader' and upgrade it to work with Webpack 4
-    const loader = 'ejs-render-loader';
+    const loader = 'ejs-prerender-loader';
     const loaderOptions = `?{"templateOptions":{"views":["${componentsDir}"]}}`;
 
     this.plugins = this.pages.map((pagePath) => {
