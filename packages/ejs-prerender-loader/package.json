@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@piuccio/ejs-compiled-loader": "^3.0.0",
     "ejs": "^3.0.1",
     "ejs-prerender": "^1.1.0-beta.1",
     "loader-utils": "^1.2.3",

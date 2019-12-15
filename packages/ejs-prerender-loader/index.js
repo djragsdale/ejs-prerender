@@ -2,9 +2,6 @@ const ejs = require('ejs');
 const ejsPrerender = require('ejs-prerender');
 const utils = require('loader-utils');
 const merge = require('merge');
-const path = require('path');
-
-const pkg = require('./package.json');
 
 const {
   getBaseComponentsDir,
@@ -12,30 +9,33 @@ const {
 } = ejsPrerender;
 
 module.exports = function (source) {
-  console.log(`Invoking ejs-render-loader@${pkg.version}`, Object.keys(ejsPrerender));
-  // console.log('ejs-render-loader source', source);
   this.cacheable && this.cacheable();
 
   const config = getConfig();
-  // console.log('ejs-render-loader config', config);
   const baseComponentsDir = getBaseComponentsDir(config);
-  // console.log('ejs-render-loader baseComponentsDir', baseComponentsDir);
 
-  const options = merge({
-    // Default options here
+  const defaultOptions = {
     views: [baseComponentsDir],
-  }, utils.getOptions(this));
-  // options.client = true; // Messes with the include function
+  };
 
-  // console.log('ejs-render-loader options', options);
+  const options = merge(defaultOptions, utils.getOptions(this));
+  // options.client = true; // Removes the include() function in favor of a callback
 
   const filename = utils.getRemainingRequest(this).replace(/^!/, "");
   // Use filenames relative to working dir, which should be project root
   // options.filename = path.relative(process.cwd(), this.resourcePath);
   options.filename = filename;
 
+  // Most plugins return this template function. I can't do that because the internal referenced
+  // are no longer in closure.
   const template = ejs.compile(source, options);
-  console.log('template fn in loader', template.toString());
 
-  return 'module.exports = ' + template;
+  // Go ahead and invoke template function while it has closure.
+  const renderedTemplate = template();
+
+  // Create my own template function to return the rendered html.
+  // I may need to do something to protect backticks being used in the .ejs.
+  const templateFn = new Function(`return \`${renderedTemplate}\``);
+
+  return 'module.exports = ' + templateFn;
 };
