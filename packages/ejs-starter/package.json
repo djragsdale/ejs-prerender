@@ -1,6 +1,6 @@
 {
   "name": "ejs-starter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "private": true,
   "scripts": {
@@ -37,7 +37,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
     "ejs-prerender-loader": "^1.0.1",
-    "ejs-prerender-webpack-plugin": "^1.0.1",
+    "ejs-prerender-webpack-plugin": "^1.0.2",
     "env-cmd": "^10.0.1",
     "eslint": "latest",
     "eslint-config-airbnb-base": "latest",
