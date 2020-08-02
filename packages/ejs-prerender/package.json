@@ -1,6 +1,6 @@
 {
   "name": "ejs-prerender",
-  "version": "1.1.0-beta.1",
+  "version": "1.1.0",
   "description": "A tool for structured pre-rendering of EJS templates and partials",
   "keywords": [
     "ejs",
