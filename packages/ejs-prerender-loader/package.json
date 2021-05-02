@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "David Ragsdale <https://github.com/djragsdale>",
+  "license": "MIT",
   "dependencies": {
     "ejs": "^3.0.1",
     "ejs-prerender": "^1.1.0-beta.1",

@@ -1,6 +1,7 @@
 {
   "name": "ejs-prerender",
   "private": true,
+  "author": "David Ragsdale <https://github.com/djragsdale>",
   "workspaces": [
     "packages/*"
   ],

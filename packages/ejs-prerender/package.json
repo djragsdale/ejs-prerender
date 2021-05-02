@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/djragsdale/ejs-prerender.git"
   },
-  "author": "David Ragsdale",
+  "author": "David Ragsdale <https://github.com/djragsdale>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/djragsdale/ejs-prerender/issues"
