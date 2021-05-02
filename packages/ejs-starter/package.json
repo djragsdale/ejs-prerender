@@ -13,7 +13,7 @@
     "preview": "npm run build && http-server public",
     "preview2": "npm run build2 && http-server public",
     "start": "npm run watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "watch": "npm-run-all -p watch:*",
     "watch:html": "nodemon -e ejs --exec \"npm run build:html\"",
     "watch:js": "webpack-dev-server --config webpack.dev.js --mode development"
