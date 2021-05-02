@@ -13,7 +13,7 @@
     "test": "lerna run test",
     "update-version": "lerna publish --skip-git --skip-npm --force-publish '*'",
     "update-clean": "lerna publish",
-    "check-packages": "npm run lerna:clean && npm run learn:compile && npm test && npm run lint",
+    "check-packages": "npm run lerna:clean && npm run lerna:compile && npm test && npm run lint",
     "publish-packages": "./scripts/publish"
   },
   "devDependencies": {
