@@ -1,6 +1,6 @@
 {
   "name": "ejs-prerender-loader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,10 +9,10 @@
   "author": "David Ragsdale <https://github.com/djragsdale>",
   "license": "MIT",
   "dependencies": {
-    "ejs": "^3.0.1",
-    "ejs-prerender": "^1.1.0-beta.1",
-    "loader-utils": "^1.2.3",
-    "merge": "^1.2.1"
+    "ejs": "^3.1.6",
+    "ejs-prerender": "^1.1.1",
+    "loader-utils": "^3.2.0",
+    "merge": "^2.1.1"
   },
   "gitHead": "a04007753a61f0f363b1579d8e0277e2a7d6cbf4"
 }
