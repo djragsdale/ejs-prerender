@@ -1,6 +1,6 @@
 {
   "name": "ejs-prerender-webpack-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,10 +9,10 @@
   "author": "David Ragsdale <https://github.com/djragsdale>",
   "license": "MIT",
   "dependencies": {
-    "ejs-prerender": "^1.1.0-beta.1",
-    "ejs-prerender-loader": "^1.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.0.0"
+    "ejs-prerender": "^1.1.1",
+    "ejs-prerender-loader": "^1.0.3",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.0.0"
   },
   "gitHead": "a04007753a61f0f363b1579d8e0277e2a7d6cbf4"
 }

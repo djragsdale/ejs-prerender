@@ -47,7 +47,6 @@ class EjsPrerenderWebpackPlugin {
       // Replace extension and trim leading /
       const desiredFilename = replaceExtension('.ejs', '.html', pagePath.substring(1));
       const fullTemplatePath = `${loader}${loaderOptions}!${path.relative(baseDir, path.join(pagesDir, pagePath))}`;
-      // const fullTemplatePath = `${loader}!${path.relative(baseDir, path.join(pagesDir, pagePath))}`;
 
       return {
         pagePath,
@@ -60,7 +59,6 @@ class EjsPrerenderWebpackPlugin {
     });
 
     this.plugins.forEach(({
-      pagePath,
       plugin
     }) => {
       plugin.apply(compiler);
