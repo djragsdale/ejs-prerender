@@ -20,7 +20,7 @@ module.exports = function (source) {
   const options = merge(defaultOptions, this.getOptions());
   // options.client = true; // Removes the include() function in favor of a callback
 
-  const filename = utils.getRemainingRequest(this).replace(/^!/, "");
+  const filename = this.getRemainingRequest(this).replace(/^!/, "");
   // Use filenames relative to working dir, which should be project root
   // options.filename = path.relative(process.cwd(), this.resourcePath);
   options.filename = filename;
