@@ -1,6 +1,5 @@
 const ejs = require('ejs');
 const ejsPrerender = require('ejs-prerender');
-const utils = require('loader-utils');
 const merge = require('merge');
 
 const {
@@ -18,7 +17,7 @@ module.exports = function (source) {
     views: [baseComponentsDir],
   };
 
-  const options = merge(defaultOptions, utils.getOptions(this));
+  const options = merge(defaultOptions, this.getOptions());
   // options.client = true; // Removes the include() function in favor of a callback
 
   const filename = utils.getRemainingRequest(this).replace(/^!/, "");
@@ -26,7 +25,7 @@ module.exports = function (source) {
   // options.filename = path.relative(process.cwd(), this.resourcePath);
   options.filename = filename;
 
-  // Most plugins return this template function. I can't do that because the internal referenced
+  // Most plugins return this template function. I can't do that because the internal references
   // are no longer in closure.
   const template = ejs.compile(source, options);
 
