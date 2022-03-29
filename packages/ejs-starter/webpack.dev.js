@@ -1,16 +1,20 @@
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { EjsPrerenderWebpackPlugin } = require('ejs-prerender');
+const EjsPrerenderWebpackPlugin = require('ejs-prerender-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   devtool: 'eval-cheap-module-source-map',
   entry: './src/js/index.js',
   devServer: {
     port: 8080,
-    contentBase: path.join(__dirname, 'public'),
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
   },
-  node: {
-    fs: 'empty',
+  resolve: {
+    fallback: {
+      fs: false,
+    },
   },
   module: {
     rules: [
@@ -28,9 +32,6 @@ module.exports = {
           {
             // creates style nodes from JS strings
             loader: 'style-loader',
-            options: {
-              sourceMap: true,
-            },
           },
           {
             // translates CSS into CommonJS
@@ -43,9 +44,7 @@ module.exports = {
             // compiles Sass to CSS
             loader: 'sass-loader',
             options: {
-              outputStyle: 'expanded',
               sourceMap: true,
-              sourceMapContents: true,
             },
           },
           // Please note we are not running postcss here
@@ -57,32 +56,22 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            // On development we want to see where the file is coming from, hence we preserve the [path]
-            name: '[path][name].[ext]?hash=[hash:20]',
+            // On development we want to see where the file is coming from, hence we preserve the
+            // [path]
+            name: '[path][name].[ext]?hash=[contentHash:20]',
             limit: 8192,
           },
         }],
+        type: 'asset/inline',
       },
       {
         // Load all icons
         test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-        use: [{
-          loader: 'file-loader',
-        }],
+        type: 'asset/resource',
       },
     ],
   },
   plugins: [
-    // // Can I map the EJS templates over an array of pages and get an array of HtmlWebpackPlugins?
-    // ...[
-    //   'index.html',
-    //   'about/index.html',
-    // ]
-    //   .map((template) => new HtmlWebpackPlugin({
-    //     filename: template,
-    //     template: `public/${template}`,
-    //     inject: true,
-    //   })),
     new EjsPrerenderWebpackPlugin(),
   ],
 };

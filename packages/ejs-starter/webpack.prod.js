@@ -1,23 +1,22 @@
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
-const cssNano = require('cssnano');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const EjsPrerenderWebpackPlugin = require('ejs-prerender-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path');
 
 const buildPath = path.resolve(__dirname, 'public');
 
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
   entry: './src/js/index.js',
   output: {
-    filename: '[name].[hash:20].js',
+    filename: '[name].[contentHash:20].js',
     path: buildPath,
   },
-  node: {
-    fs: 'empty',
+  resolve: {
+    fallback: {
+      fs: false,
+    },
   },
   module: {
     rules: [
@@ -53,9 +52,7 @@ module.exports = {
             // compiles Sass to CSS
             loader: 'sass-loader',
             options: {
-              outputStyle: 'expanded',
               sourceMap: true,
-              sourceMapContents: true,
             },
           },
         ],
@@ -66,94 +63,28 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            name: '[name].[hash:20].[ext]',
+            name: '[name].[contentHash:20].[ext]',
             limit: 8192,
           },
         }],
+        type: 'asset/inline',
       },
       {
         // Load all icons
         test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-        use: [{
-          loader: 'file-loader',
-        }],
+        type: 'asset/resource',
       },
-      // {
-      //   test: /\.(ejs)$/,
-      //   use: [{
-      //     loader: 'ejs-compiled-loader',
-      //     options: {
-      //       views: ['/Users/davidragsdale/Repos/vanilla-starter/components'],
-      //     },
-      //   }],
-      // },
-      // {
-      //   test: /\.(ejs)$/,
-      //   use: [{
-      //     loader: 'compile-ejs-loader',
-      //     options: {
-      //       views: ['/Users/davidragsdale/Repos/vanilla-starter/components'],
-      //     },
-      //   }],
-      // },
     ],
   },
   plugins: [
-    // ...[
-    //   'index.html',
-    //   'about/index.html',
-    // ]
-    //   .map((template) => new HtmlWebpackPlugin({
-    //     filename: template,
-    //     template: `public/${template}`,
-    //     inject: true,
-    //   })),
     new EjsPrerenderWebpackPlugin(),
-    // new CleanWebpackPlugin(buildPath),
-    // new FaviconsWebpackPlugin({
-    //   // Your source logo
-    //   logo: './src/assets/icon.png',
-    //   // The prefix for all image files (might be a folder or a name)
-    //   prefix: 'icons-[hash]/',
-    //   // Generate a cache file with control hashes and
-    //   // don't rebuild the favicons until those hashes change
-    //   persistentCache: true,
-    //   // Inject the html into the html-webpack-plugin
-    //   inject: true,
-    //   // favicon background color (see https://github.com/haydenbleasel/favicons#usage)
-    //   background: '#fff',
-    //   // favicon app title (see https://github.com/haydenbleasel/favicons#usage)
-    //   title: '{{projectName}}',
-
-    //   // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
-    //   icons: {
-    //     android: true,
-    //     appleIcon: true,
-    //     appleStartup: true,
-    //     coast: false,
-    //     favicons: true,
-    //     firefox: true,
-    //     opengraph: false,
-    //     twitter: false,
-    //     yandex: false,
-    //     windows: false,
-    //   },
-    // }),
     new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css',
     }),
-    new OptimizeCssAssetsPlugin({
-      cssProcessor: cssNano,
-      cssProcessorOptions: {
-        map: {
-          inline: false,
-        },
-        discardComments: {
-          removeAll: true,
-        },
-        discardUnused: false,
-      },
-      canPrint: true,
-    }),
   ],
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(),
+    ],
+  },
 };

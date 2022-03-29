@@ -18,6 +18,6 @@
     "publish-packages": "./scripts/publish"
   },
   "devDependencies": {
-    "lerna": "^3.19.0"
+    "lerna": "^4.0.0"
   }
 }
