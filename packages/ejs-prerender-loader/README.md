@@ -2,6 +2,8 @@
 
 ## Basis
 
+> _Warning:_ This loader requires Webpack 5!
+
 This webpack plugin is based on the [ejs-prerender](https://github.com/djragsdale/ejs-prerender/tree/master/packages/ejs-prerender) package. See that for more information on configuration options and goals. This Webpack loader was specifically created for use by [ejs-prerender-webpack-plugin](https://github.com/djragsdale/ejs-prerender/tree/master/packages/ejs-prerender-webpack-plugin).
 
 ## Usage
